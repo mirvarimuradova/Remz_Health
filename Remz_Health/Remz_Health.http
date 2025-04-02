@@ -1,0 +1,6 @@
+@Remz_Health_HostAddress = http://localhost:5156
+
+GET {{Remz_Health_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
