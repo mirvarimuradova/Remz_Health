@@ -33,6 +33,31 @@ namespace Remz_Health.Controllers
 
             return await _context.Patients.ToListAsync();
         }
+        [HttpGet("GetUserByEmail")]
+        public IActionResult GetUserByEmail(string email)
+        {
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return BadRequest("Email daxil edilməyib.");
+            }
+
+            // Aşağıdakı addımda email-i normalize edirik
+            var normalizedEmail = email.Trim().ToLower();
+
+            var patient = _context.Patients.FirstOrDefault(p => p.Email.Trim().ToLower() == normalizedEmail);
+            var phone = _context.Phones.FirstOrDefault(p => p.Id == patient.PhoneId).PhoneNumber;
+            if (patient != null)
+            {
+                return Ok(new { userType = "patient", patient.Id, patient.Email, patient.Name, patient.Password,
+                    phone,
+                    patient.Surname,
+                    patient.Fin
+                });
+            }
+            return NotFound("İstifadəçi tapılmadı.");
+        }
+
 
         // GET: api/Patients/5
         [HttpGet("{id}")]
@@ -113,6 +138,7 @@ namespace Remz_Health.Controllers
                 Name = patient.Name,
                 Surname = patient.Surname,
                 Email = patient.Email,
+                Phone =  patient.Phone.PhoneNumber,
                 Role = "Patient"
             };
 
