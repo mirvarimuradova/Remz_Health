@@ -10,7 +10,7 @@ using Remz_Health.DAL.Data;
 
 namespace Remz_Health.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
+    //[DbContext(typeof(IdentityContext))]
     partial class IdentityContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -13,12 +13,6 @@ builder.Services.AddDbContext<RemzContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
 
 
-builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon")));
-
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityContext>()
-    .AddDefaultTokenProviders();
 
 
 builder.Services.AddControllers()
@@ -26,6 +20,7 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
     });
+
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -59,7 +54,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
 
-app.UseAuthentication();
+
 
 app.UseAuthorization();
 

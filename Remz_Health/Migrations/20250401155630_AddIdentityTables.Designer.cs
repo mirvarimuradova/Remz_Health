@@ -11,7 +11,7 @@ using Remz_Health.DAL.Data;
 
 namespace Remz_Health.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
+    //[DbContext(typeof(IdentityContext))]
     [Migration("20250401155630_AddIdentityTables")]
     partial class AddIdentityTables
     {
