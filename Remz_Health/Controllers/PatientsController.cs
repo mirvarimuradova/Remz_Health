@@ -33,6 +33,8 @@ namespace Remz_Health.Controllers
 
             return await _context.Patients.ToListAsync();
         }
+
+
         [HttpGet("GetUserByEmail")]
         public IActionResult GetUserByEmail(string email)
         {
@@ -57,7 +59,7 @@ namespace Remz_Health.Controllers
             }
             return NotFound("İstifadəçi tapılmadı.");
         }
-
+    
 
         // GET: api/Patients/5
         [HttpGet("{id}")]

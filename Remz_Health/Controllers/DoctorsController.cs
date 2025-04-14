@@ -59,9 +59,14 @@ namespace Remz_Health.Controllers
 
             if (doctor != null)
             {
-                return Ok(new { userType = "doctor", doctor.Id, doctor.Email, doctor.Name, doctor.PasswordHash ,
+                return Ok(new { userType = "doctor", doctor.Id,
+                    doctor.Email,
+                    doctor.Fin, 
+                    doctor.Name,
+                    doctor.Surname,
+                    doctor.PasswordHash ,
                 
-                doctor.BirthDate, hospital, doctor.Surname, phone});
+                    doctor.BirthDate, hospital, phone});
             }
 
             return NotFound("İstifadəçi tapılmadı.");
